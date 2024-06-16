@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class ImprimirHistograma {
     public static void main(String[] args) {
-
         int[] arreglo = new int[12];
 
         Scanner s = new Scanner(System.in);
