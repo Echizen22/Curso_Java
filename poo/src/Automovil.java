@@ -1,5 +1,6 @@
 public class Automovil {
 
+    private int id = 0;
     private String fabricante;
     private String modelo;
     private String color = "gris";
@@ -8,11 +9,14 @@ public class Automovil {
 
     private static String colorPatente = "Naranja";
     private static int capacidadEstanqueEstatico = 30;
+    private static int ultimoId;;
 
     public Automovil() {
+        this.id = ++ultimoId;
     }
 
     public Automovil(String fabricante, String modelo) {
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
@@ -31,6 +35,14 @@ public class Automovil {
         this(fabricante, modelo, color, cilindrada);
         this.cilindrada = cilindrada;
         this.capacidadEstanque = capacidadEstanque;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFabricante() {
@@ -80,8 +92,18 @@ public class Automovil {
     public static void setColorPatente(String colorPatente){
         Automovil.colorPatente = colorPatente;
     }
+
+    public static int getCapacidadEstanqueEstatico() {
+        return capacidadEstanqueEstatico;
+    }
+
+    public static void setCapacidadEstanqueEstatico(int capacidadEstanqueEstatico) {
+        Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
+    }
+
     public String verDetalle(){
-        return "auto.fabricante = " + this.getFabricante() +
+        return "auto.id = " + this.id +
+                "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo() +
                 "\nauto.color = " + this.color +
                 "\nauto.patenteColor = " + Automovil.colorPatente +
@@ -130,6 +152,6 @@ public class Automovil {
 
     @Override
     public String toString() {
-        return fabricante + " " + modelo;
+        return this.id + " : " + fabricante + " " + modelo;
     }
 }
